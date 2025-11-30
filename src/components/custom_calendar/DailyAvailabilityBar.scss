@@ -1,0 +1,73 @@
+.daily-availability-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  grid-auto-rows: 24px;
+  gap: 4px;
+  width: 100%;
+  padding: 0.75rem;
+  background: transparent;
+  border-radius: 12px;
+}
+
+.grid-slot {
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .slot-time {
+    font-size: 0.7rem;
+    color: #aaa;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &.available {
+    &:hover {
+      background: linear-gradient(90deg, rgba(57, 255, 20, 0.25), rgba(0, 150, 0, 0.15));
+      box-shadow: 0 0 12px rgba(57, 255, 20, 0.15);
+      transform: translateY(-1px);
+      .slot-time {
+        color: #39ff14;
+      }
+    }
+  }
+
+  &.unavailable {
+    opacity: 0.3;
+    background: rgba(255, 255, 255, 0.04);
+    cursor: not-allowed;
+  }
+
+  &.selected {
+    background: linear-gradient(180deg, #39ff14, #00a300);
+    box-shadow: 0 0 16px rgba(57, 255, 20, 0.35), inset 0 -3px 10px rgba(0, 80, 0, 0.4);
+    .slot-time {
+      color: #0b0b0b;
+      font-weight: 700;
+    }
+  }
+}
+
+/* Adjust slot height depending on meeting duration */
+.daily-availability-grid[data-duration="60"] .grid-slot {
+  grid-row: span 2;
+}
+
+.daily-availability-grid[data-duration="90"] .grid-slot {
+  grid-row: span 3;
+}
+
+.daily-availability-grid[data-duration="120"] .grid-slot {
+  grid-row: span 4;
+}
+
+@media (max-width: 480px) {
+  .daily-availability-grid {
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  }
+}

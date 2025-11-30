@@ -1,0 +1,72 @@
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  // margin-top: 1rem;
+  min-width: 320px;
+
+  .sub-heading {
+    margin-top: 1rem;
+    font-size: 0.925rem;
+  }
+
+  input,
+  select,
+  textarea {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(57, 255, 20, 0.3);
+    color: #fefefe;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-family: "Nunito Sans", sans-serif !important;
+  }
+
+  .where-options {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+
+    .where-option {
+      flex: 1; // 50% width each
+      position: relative;
+      cursor: pointer;
+    }
+
+    /* hide native radios */
+    .where-option input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* button look */
+    .where-option span {
+      display: block;
+      text-align: center;
+      padding: 0.6rem 1rem;
+      // border-radius: 20px !important;
+      border: 1px solid rgba(57, 255, 20, 0.4);
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 8px !important;
+      font-family: "Bruno Ace SC" !important;
+      font-size: 0.75rem;
+      letter-spacing: 0.5px !important;
+      color: #fefefe;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+    }
+
+    /* hover */
+    .where-option:hover span {
+      border-color: #39ff14;
+      transform: translateY(-1px);
+    }
+
+    /* checked state */
+    .where-option input[type="radio"]:checked + span {
+      background: linear-gradient(rgba(57, 255, 20, 0.15), rgba(0, 67, 0, 0.9));
+      border-color: #39ff14;
+    }
+  }
+}

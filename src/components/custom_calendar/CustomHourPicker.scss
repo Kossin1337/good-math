@@ -1,0 +1,101 @@
+.custom-hour-picker {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.675rem;
+  // padding: 1rem 0 0 0;
+  border-radius: 20px;
+  color: #fefefe;
+  font-family: "Nunito Sans", sans-serif;
+  text-align: center;
+  // box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+  // background: rgba(255, 255, 255, 0.02);
+
+  .picker-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .time-selector {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+
+      .arrow-btn {
+        background: rgba(57, 255, 20, 0.1);
+        border: 1px solid rgba(57, 255, 20, 0.3);
+        color: #fefefe;
+        border-radius: 8px;
+        cursor: pointer;
+        padding: 0.25rem 0.325rem;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background: linear-gradient(var(--main-special-1), var(--sub-special-1));
+          color: black;
+          box-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+        }
+
+        svg {
+          width: 20px;
+          height: 20px;
+          transition: transform 0.2s ease;
+        }
+
+        &:active svg {
+          transform: scale(0.9);
+        }
+      }
+
+      .time-value {
+        font-family: "Bruno Ace SC";
+        font-size: 2.25rem;
+        background: linear-gradient(var(--main-special-1), var(--sub-special-1));
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: bold;
+        text-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+        user-select: none;
+      }
+    }
+  }
+
+  .summary {
+    margin-top: 0.5rem;
+
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+
+    span {
+      background: linear-gradient(var(--main-special-1), var(--sub-special-1));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: bold;
+    }
+  }
+
+  .approve-btn {
+    width: 100%;
+    margin-top: 1rem;
+    font-family: "Bruno Ace SC";
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(var(--main-special-1), var(--sub-special-1));
+    color: #fefefe;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    &:hover:not(:disabled) {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
+    }
+  }
+}

@@ -1,0 +1,108 @@
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  // overflow-y: scroll;
+  // padding-right: 0.5rem;
+  // width: calc(100% + 0.5rem);
+
+  .field-group {
+    display: flex;
+    flex-direction: column;
+
+    .form-label {
+      margin-top: 1rem;
+      font-family: "Bruno Ace SC";
+      // color: #fefefe !important;
+      font-weight: 700;
+
+      background: -webkit-linear-gradient(var(--main-special-1), var(--sub-special-1));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .form-input {
+      margin-top: 0.5rem;
+      outline: none;
+      width: 320px;
+
+      box-sizing: border-box;
+      width: 100%;
+      font-family: "Nunito Sans";
+      font-size: 1rem;
+      letter-spacing: 0.05rem;
+      text-transform: uppercase;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+      box-shadow: none;
+      background-color: #101010;
+      // border: 2px solid var(--main-special-1);
+      color: #fefefe;
+    }
+
+    /* Remove arrows for number input */
+    .school-number-input[type="number"]::-webkit-inner-spin-button,
+    .school-number-input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* For Firefox */
+    .school-number-input[type="number"] {
+      -moz-appearance: textfield;
+    }
+
+    .form-select,
+    .form-select option {
+      font-family: "Nunito Sans", sans-serif !important;
+      color: #fefefe;
+
+      .form-option {
+        .form-option-text {
+          font-family: "Nunito Sans" !important;
+        }
+      }
+    }
+
+    .form-select.custom-arrow {
+      background-image: linear-gradient(45deg, #666 50%, transparent 50%),
+        linear-gradient(135deg, #666 50%, transparent 50%);
+      background-position: calc(100% - 18px) calc(50% - 6px), calc(100% - 12px) calc(50% - 6px);
+      background-size: 6px 6px, 6px 6px;
+      background-repeat: no-repeat;
+      padding-right: 36px; /* space for arrow */
+    }
+
+    .error {
+      margin-top: 0.25rem;
+      font-family: "Nunito Sans", sans-serif !important;
+      font-size: 0.875rem;
+      color: red;
+    }
+  }
+
+  .submit-btn {
+    margin-top: 1rem;
+    font-family: "Bruno Ace SC";
+    font-size: 1.25rem;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+
+    background-color: #101010;
+    outline: none;
+    border: 1px solid #101010;
+    color: #fefefe;
+
+    &:hover {
+      cursor: pointer;
+      border: 1px solid var(--main-special-1);
+
+      background: -webkit-linear-gradient(var(--main-special-1), var(--sub-special-1));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+}

@@ -1,0 +1,340 @@
+.reviews-section {
+  position: relative;
+  min-height: 100vh;
+  max-height: 100vh;
+  z-index: 1;
+  padding: 10vh 0%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .section-header {
+    padding-left: 10%;
+    color: #fefefe;
+    font-size: 3.25rem;
+  }
+
+  .reviews-wrapper {
+    width: 100%;
+
+    overflow: hidden;
+
+    .reviews-track {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      max-width: 100vw;
+
+      // overflow-x: auto; /* Enables horizontal scroll */
+      // scroll-snap-type: x mandatory; /* Enables snap scrolling */
+      // scroll-behavior: smooth; /* Smooth animation */
+      // padding: 1.5rem 0;
+      // -webkit-overflow-scrolling: touch; /* Better on iOS */
+
+      /* SCROLL ANIMATION */
+      animation: scrollReviews 120s ease-in-out infinite alternate;
+
+      &:hover {
+        animation-play-state: paused;
+      }
+
+      .opinion-box {
+        user-select: none;
+        // width: 320px;
+        width: 420px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 2rem;
+
+        flex: 0 0 calc((100% / 3) - 1rem); /* 3 per row with gap */
+
+        // padding: 0.5rem 0;
+        background: rgba(5, 5, 5, 1);
+        border: 1px solid rgba(225, 225, 225, 0.15);
+        border-radius: 25px;
+
+        // &:nth-child(2) {
+        //   transform: translateY(1rem);
+        // }
+
+        // &:nth-child(5) {
+        //   transform: translateY(1rem);
+        // }
+
+        // &:nth-child(8) {
+        //   transform: translateY(1rem);
+        // }
+
+        &:hover {
+          transform: translateY(-1rem);
+          transition: transform 0.075s ease-in-out;
+        }
+
+        .opinion-title {
+          text-align: center;
+          background: -webkit-linear-gradient(var(--main-special-1), var(--sub-special-1));
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        .opinion-description {
+          margin-top: 0.5rem;
+          color: white;
+          // font-family: "Bruno Ace SC", sans-serif;
+          // font-family: "Nata Sans", sans-serif !important;
+          font-family: "Nunito Sans";
+          font-weight: 400;
+          line-height: 1.5;
+          font-style: normal;
+        }
+
+        .opinion-level {
+          background: -webkit-linear-gradient(var(--main-special-1), var(--sub-special-1));
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+
+          width: 100%;
+          margin-top: 1rem;
+          text-align: right;
+          color: #fefefe;
+          font-family: "Bruno Ace SC", sans-serif;
+          font-size: 0.875rem;
+          // font-family: "Nata Sans", sans-serif !important;
+        }
+
+        .opinion-footer {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          padding-top: 1rem;
+          margin-top: auto;
+          color: #fefefe;
+          font-family: "Bruno Ace SC", sans-serif;
+          font-size: 0.75rem;
+        }
+
+        &:hover {
+          border: 1px solid rgba(225, 225, 225, 0.25);
+        }
+      }
+    }
+  }
+}
+
+@keyframes scrollReviews {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(-200%);
+  }
+  75% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* ===============================
+   ⚙️ Reviews Section – Keep Scroll Animation
+   =============================== */
+
+/* 🖥 Large screens */
+@media (max-width: 1320px) {
+  .reviews-section {
+    .section-header {
+      font-size: 3rem;
+      padding-left: 8%;
+    }
+
+    .reviews-wrapper {
+      .reviews-track {
+        gap: 0.75rem;
+        animation-duration: 100s; // a bit smoother
+        .opinion-box {
+          width: 380px;
+          flex: 0 0 calc((100% / 3) - 0.75rem);
+          padding: 0.85rem 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+/* 💻 Tablet landscape & medium laptops */
+@media (max-width: 1024px) {
+  .reviews-section {
+    .section-header {
+      font-size: 2.6rem;
+      text-align: center;
+      padding-left: 0;
+    }
+
+    .reviews-wrapper {
+      .reviews-track {
+        gap: 0.75rem;
+        animation-duration: 90s;
+
+        .opinion-box {
+          width: 340px;
+          flex: 0 0 auto;
+          margin: 0 0.25rem;
+        }
+      }
+    }
+  }
+}
+
+/* 📱 Tablet portrait / large phones */
+@media (max-width: 768px) {
+  .reviews-section {
+    overflow: hidden;
+
+    .section-header {
+      font-size: 2.2rem;
+      text-align: center;
+      padding-left: 0;
+    }
+
+    .reviews-wrapper {
+      .reviews-track {
+        animation-duration: 80s;
+        gap: 0.75rem;
+
+        .opinion-box {
+          width: 300px;
+          flex: 0 0 auto;
+          padding: 0.75rem 1rem;
+        }
+      }
+    }
+  }
+}
+
+/* 📱 Small phones */
+@media (max-width: 480px) {
+  .reviews-section {
+    .section-header {
+      font-size: 1.8rem;
+      text-align: center;
+      padding-left: 0;
+    }
+
+    .reviews-wrapper {
+      .reviews-track {
+        animation-duration: 70s;
+        gap: 0.5rem;
+        .opinion-box {
+          width: 260px;
+          flex: 0 0 auto;
+          padding: 0.65rem 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+/* ------------------- */
+/* Make wrapper scrollable (for drag/buttons) without visual change */
+.reviews-wrapper.is-interactive {
+  overflow-x: auto; /* enable programmatic & drag scroll */
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+.reviews-wrapper.is-interactive::-webkit-scrollbar {
+  display: none; /* WebKit */
+}
+
+/* Keep your CSS animation; we only pause via inline style from TS */
+
+/* Bounce feedback when hitting limits */
+.reviews-wrapper.bounce-left .reviews-track {
+  animation: bounceLeft 0.3s ease;
+}
+.reviews-wrapper.bounce-right .reviews-track {
+  animation: bounceRight 0.3s ease;
+}
+@keyframes bounceLeft {
+  0% {
+    transform: translateX(0);
+  }
+  40% {
+    transform: translateX(14px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes bounceRight {
+  0% {
+    transform: translateX(0);
+  }
+  40% {
+    transform: translateX(-14px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Optional: ensure pointer shows draggable feel over the track */
+.reviews-wrapper.is-interactive:active {
+  cursor: grabbing;
+}
+.reviews-wrapper.is-interactive {
+  cursor: grab;
+}
+
+/* ⚡ Speed up scroll animation slightly */
+.reviews-track.quick-scroll {
+  animation: scrollReviews 80s linear infinite alternate; // was 120s
+}
+
+/* ⚡ Neon arrows with glow + smooth hover */
+.reviews-nav {
+  // position: absolute;
+  // bottom: 6%;
+  // left: 50%;
+  // transform: translateX(-50%);
+  display: flex;
+  margin-top: 2rem;
+  justify-content: center;
+  gap: 1.5rem;
+  z-index: 10;
+
+  .neon-arrow {
+    background: transparent;
+    border: 1px solid rgba(57, 255, 20, 0.25);
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+    color: var(--main-special-1);
+    font-size: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+    transition: all 0.25s ease;
+
+    &:hover {
+      box-shadow: 0 0 18px rgba(57, 255, 20, 0.6);
+      transform: scale(1.08);
+      background: rgba(57, 255, 20, 0.08);
+    }
+
+    &:active {
+      transform: scale(0.95);
+      background: rgba(57, 255, 20, 0.15);
+    }
+  }
+}

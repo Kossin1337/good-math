@@ -1,0 +1,139 @@
+.button {
+  user-select: none;
+  --w: 180px;
+  --h: 60px;
+  --icon-size: 25px;
+  --text-color: rgb(210 210 240);
+  --box-glow-color: transparent;
+  --box-glow-blur: 20px;
+
+  width: 320px;
+
+  position: relative;
+  min-width: var(--w);
+  // min-height: var(--h);
+  border-radius: var(--h);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  font-family: "Montserrat";
+  color: var(--text-color);
+  // background: rgba(5, 20, 4, 1);
+  background: rgb(8, 33, 6);
+  background: rgb(8, 19, 7);
+  box-shadow: 0 0 0 1px rgba(204, 220, 200, 0.22), 0 0 var(--box-glow-blur) var(--box-glow-color),
+    inset 0 0 26px -10px var(--box-glow-color);
+
+  border: 2px solid --main-special-1;
+  outline: none !important;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 500ms ease;
+  z-index: 2;
+  padding: 0.75rem 0 !important;
+
+  text-wrap: nowrap;
+
+  .calendar-days-icon {
+    position: absolute;
+    left: 1rem;
+    width: 24px;
+    height: 24px;
+    opacity: 0;
+    // box-sizing: border-box;
+    // padding: 0.5rem;
+    // background: rgba(29, 136, 8, 0.5);
+
+    transition: opacity 0.15s ease;
+  }
+}
+
+.cta-button-link {
+  text-decoration: none;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(114, 228, 0, 0.1);
+  box-shadow: inset 0 0px 24px 0 rgb(170 230 250 / 0.12);
+  border-radius: var(--h);
+  z-index: 1;
+  transition: transform 500ms ease, box-shadow 500ms ease;
+}
+
+.text,
+.icon {
+  z-index: 2;
+}
+
+.text {
+  transform: translateX(-12.5%);
+  color: white;
+  font-size: 1.125rem;
+  font-family: "Bruno Ace SC", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  transition: transform 500ms ease;
+  letter-spacing: 0.5px;
+
+  background: -webkit-linear-gradient(rgb(2, 255, 90), rgb(39, 154, 4));
+  background: -webkit-linear-gradient(rgb(38, 163, 0), var(--main-special-1));
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.icon {
+  position: absolute;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  left: 0;
+  transform: translateX(250px);
+  transition: transform 500ms ease, color 500ms ease;
+}
+svg {
+  width: 100%;
+  height: 100%;
+  // fill: #;
+  color: limegreen;
+  // opacity: 1;
+  // transform: scale(1.125);
+}
+
+.button:active {
+  --box-glow-blur: 36px;
+}
+.button:hover,
+.button:active {
+  --box-glow-color: var(--color);
+
+  .calendar-days-icon {
+    opacity: 0.5;
+  }
+}
+.button:hover::before,
+.button:active::before {
+  transform: translateX(84.25%);
+  box-shadow: inset 0 0px 0px 0 transparent;
+}
+.button:hover .text,
+.button:active .text {
+  transform: translateX(0%);
+  animation-play-state: running;
+}
+.button:hover .icon,
+.button:active .icon {
+  transform: translateX(282px);
+  color: limegreen;
+}
+
+.button:focus-visible {
+  outline: none;
+}
+.button:focus-visible:not(:hover, :active) {
+  --box-glow-color: rgba(29, 136, 8, 0.5);
+}

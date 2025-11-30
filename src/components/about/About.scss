@@ -1,0 +1,219 @@
+.about-section {
+  min-height: 100vh;
+  max-height: 100vh;
+  z-index: 1;
+  padding: 10vh 10%;
+  background: rgba(0, 0, 0, 0.85);
+
+  .section-header {
+    color: #fefefe;
+    font-size: 3.25rem;
+  }
+
+  span {
+    color: #fefefe;
+    font-family: "Nunito Sans", sans-serif;
+    line-height: 1.75;
+    font-weight: 500;
+    font-style: normal;
+    // text-transform: norm;
+    // font-size: 0.875rem;
+    font-size: 0.9125rem;
+  }
+
+  .about-description {
+    b {
+      background: -webkit-linear-gradient(
+        top,
+        var(--main-special-1) 0%,
+        var(--main-special-1) 30%,
+        var(--sub-special-1) 100%
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  .about-info-box {
+    display: flex;
+    flex-direction: column;
+    // padding: 1rem;
+
+    .sub-heading {
+      font-size: 2rem;
+
+      background: -webkit-linear-gradient(var(--main-special-1), var(--sub-special-1));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    h3 {
+      background: -webkit-linear-gradient(var(--main-special-1), var(--sub-special-1));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  .goals-box {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    .sub-heading {
+      font-size: 2rem;
+
+      background: -webkit-linear-gradient(var(--main-special-1), var(--sub-special-1));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  /* MAKE IT MORE SUBTLE */
+  .goal-text {
+    b {
+      background: -webkit-linear-gradient(
+        top,
+        var(--main-special-1) 0%,
+        var(--main-special-1) 30%,
+        var(--sub-special-1) 100%
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      // opacity: 0.85;
+    }
+  }
+
+  .material-range-box {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    .sub-heading {
+      font-size: 2rem;
+
+      background: -webkit-linear-gradient(var(--main-special-1), var(--sub-special-1));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+}
+
+/* ================================
+   📌 About Section – Responsive UI
+   ================================ */
+
+/* 🖥 Large screens refinement */
+@media (max-width: 1320px) {
+  .about-section {
+    padding: 8vh 8%;
+
+    .section-header {
+      font-size: 3rem;
+    }
+
+    .about-info-box .sub-heading,
+    .goals-box .sub-heading,
+    .material-range-box .sub-heading {
+      font-size: 1.8rem;
+    }
+
+    span {
+      font-size: 0.875rem;
+    }
+  }
+}
+
+/* 💻 Tablets landscape & mid-laptops */
+@media (max-width: 1024px) {
+  .about-section {
+    padding: 6vh 6%;
+
+    .section-header {
+      font-size: 2.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .about-info-box .sub-heading,
+    .goals-box .sub-heading,
+    .material-range-box .sub-heading {
+      font-size: 1.6rem;
+    }
+
+    span {
+      font-size: 0.85rem;
+      line-height: 1.65;
+    }
+  }
+}
+
+/* 📱 Tablet / small laptop */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 5vh 5%;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.75rem;
+
+    .section-header {
+      font-size: 2.2rem;
+      text-align: center;
+    }
+
+    .about-info-box,
+    .goals-box,
+    .material-range-box {
+      text-align: center;
+    }
+
+    .about-info-box .sub-heading,
+    .goals-box .sub-heading,
+    .material-range-box .sub-heading {
+      font-size: 1.45rem;
+    }
+
+    span {
+      font-size: 0.82rem;
+      line-height: 1.55;
+    }
+  }
+}
+
+/* 📱 Small phones */
+@media (max-width: 480px) {
+  .about-section {
+    padding: 4vh 4%;
+    gap: 0.5rem;
+    max-height: 100vh;
+
+    .section-header {
+      font-size: 1.9rem;
+    }
+
+    .about-info-box .sub-heading,
+    .goals-box .sub-heading,
+    .material-range-box .sub-heading {
+      font-size: 1.25rem;
+    }
+
+    span {
+      font-size: 0.78rem;
+      line-height: 1.45;
+    }
+
+    .about-info-box,
+    .goals-box,
+    .material-range-box {
+      margin-top: 0.5rem;
+    }
+  }
+}

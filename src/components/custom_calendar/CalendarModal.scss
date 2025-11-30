@@ -1,0 +1,40 @@
+.calendar-modal-wrapper {
+  position: fixed;
+  overflow-y: scroll;
+  inset: 0;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  max-width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+
+  background-color: transparent;
+
+  .blur-background {
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(8px); // the magic for background blur
+    -webkit-backdrop-filter: blur(8px); // Safari support
+    background: rgba(0, 0, 0, 0.75); // dark semi-transparent overlay
+    z-index: 1;
+  }
+
+  .calendar-modal {
+    z-index: 111;
+    position: relative;
+    background: #0a0a0a;
+
+    border: 2px solid #252525;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,306 @@
+.navigation {
+  // position: fixed;
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 10%;
+  z-index: 9999;
+  // background-color: rgba(5, 5, 5, 0.925);
+  background-color: rgba(5, 5, 5, 1);
+  border-bottom: 1px solid rgba(200, 200, 200, 0.2);
+
+  a {
+    text-decoration: none;
+    .logo {
+      color: white;
+      font-family: "Bruno Ace SC", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      text-wrap: nowrap !important;
+
+      .two-logo {
+        background: -webkit-linear-gradient(var(--main-special-1), var(--sub-special-1));
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 800;
+        font-style: normal;
+        // letter-spacing: -2px;
+      }
+
+      &:hover {
+        background: -webkit-linear-gradient(var(--main-special-1), var(--sub-special-1));
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+
+  .navigation-menu {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    .navigation-logo-link {
+      display: none;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .menu-item {
+      display: flex;
+      align-items: center;
+      user-select: none;
+      color: #eee;
+      font-family: "Bruno Ace SC", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      text-wrap: nowrap;
+
+      svg {
+        width: 18px;
+        // height: 24px;
+        // fill: blue;
+      }
+
+      &:hover {
+        cursor: pointer;
+        color: #fefefe;
+        transform: scale(1.1);
+      }
+    }
+
+    .cta-button {
+      padding: 0.5rem 1rem;
+
+      font-family: "Bruno Ace SC", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      border: none;
+      border-radius: 20px;
+      outline: none;
+    }
+  }
+}
+
+/* === Burger base === */
+.burger {
+  display: none; // hidden on desktop
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 35px;
+  height: 35px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10001;
+
+  span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #39ff14;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 4px rgba(57, 255, 20, 0.6);
+  }
+
+  &.open {
+    span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+  }
+}
+
+/* === Burger base === */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 35px;
+  height: 35px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10001;
+
+  span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #39ff14;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 4px rgba(57, 255, 20, 0.6);
+  }
+
+  &.open {
+    span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+  }
+}
+
+/* === MOBILE MENU === */
+.navigation-menu {
+  transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+/* ===========================
+   MEDIA QUERIES START HERE
+   =========================== */
+
+/* 💻 Large screens */
+@media (max-width: 1320px) {
+  .navigation {
+    // padding: 0.75rem 6%;
+  }
+}
+
+/* 📱 Tablet and below */
+// @media (max-width: 1220px) {
+//   .navigation {
+//     padding: 0.75rem 4%;
+//   }
+// }
+
+/* 📱 Mobile */
+@media (max-width: 1150px) {
+  .burger {
+    display: flex;
+  }
+
+  .navigation-menu {
+    position: fixed;
+    top: 79px; // add Y offset under navbar
+    right: 0;
+    height: calc(100vh - 79px);
+    width: 70vw;
+    max-width: 360px;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 1rem; // offset for logo area
+    gap: 2rem !important;
+
+    background: rgba(5, 5, 5, 0.98);
+    border-left: 1px solid rgba(200, 200, 200, 0.2);
+    // border-left: 1px solid rgba(57, 255, 20, 0.25);
+    backdrop-filter: blur(10px);
+    transform: translateX(100%);
+    opacity: 0;
+    z-index: 10000;
+
+    .navigation-logo-link {
+      display: block !important;
+      transform: scale(0.75);
+    }
+
+    a {
+      width: 100%;
+      text-align: center;
+    }
+
+    .menu-item {
+      width: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      color: #ddd;
+      transition: all 0.25s ease;
+      text-transform: uppercase;
+
+      &:hover {
+        color: #39ff14;
+        transform: scale(1.07);
+        text-shadow: 0 0 6px rgba(57, 255, 20, 0.6);
+      }
+    }
+
+    .cta-button {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 75%; // ← adjusted per request
+      text-align: center;
+      background: linear-gradient(90deg, #39ff14, #00b200);
+      color: #000;
+      border-radius: 25px;
+      box-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: linear-gradient(90deg, #45ff20, #00cc00);
+        box-shadow: 0 0 20px rgba(57, 255, 20, 0.55);
+      }
+    }
+  }
+
+  .navigation-menu.show {
+    transform: translateX(0);
+    opacity: 1;
+
+    .home-link {
+      display: none !important;
+      visibility: none !important;
+    }
+
+    // .cta-button {
+    //   m
+    // }
+  }
+}
+
+/* 📱 Small phones */
+@media (max-width: 480px) {
+  .navigation {
+    padding: 0.5rem 1rem;
+
+    .logo {
+      font-size: 1rem;
+    }
+  }
+
+  .navigation-menu {
+    width: 80vw;
+    padding-top: 1.5rem;
+
+    .menu-item {
+      font-size: 1rem;
+      letter-spacing: 0.8px;
+    }
+
+    .cta-button {
+      width: 75%;
+      font-size: 0.85rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+}

@@ -1,0 +1,468 @@
+.custom-calendar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background-color: #080808;
+  opacity: 0.95;
+  border-radius: 20px;
+  padding: 1rem;
+  color: #fefefe;
+  font-family: "Nunito Sans", sans-serif;
+  max-width: 450px;
+  margin: 0rem auto;
+  // box-shadow: 0 0 30px rgba(57, 255, 20, 0.2);
+  text-align: center;
+
+  .time-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+
+    .time-option {
+      position: relative;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #cfcfcf;
+      background: linear-gradient(145deg, #0d0d0d, #111);
+      border: 1px solid rgba(60, 255, 100, 0.25);
+      border-radius: 12px;
+      padding: 0.7rem 1.5rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 0 8px rgba(0, 255, 100, 0.1);
+
+      &:hover {
+        border-color: rgba(60, 255, 100, 0.6);
+        box-shadow: 0 0 10px rgba(60, 255, 100, 0.3), inset 0 0 8px rgba(60, 255, 100, 0.15);
+        color: #ffffff;
+        transform: translateY(-2px);
+      }
+
+      &.active {
+        background: linear-gradient(145deg, #003b00, #00a300);
+        border-color: #39ff14;
+        color: #fff;
+        box-shadow: 0 0 15px rgba(57, 255, 20, 0.5), 0 0 25px rgba(0, 150, 0, 0.3);
+        transform: translateY(-2px);
+      }
+
+      /* animated glow when active */
+      &.active::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 12px;
+        background: radial-gradient(circle at center, rgba(57, 255, 20, 0.3), transparent 70%);
+        animation: pulseGlow 2s infinite alternate ease-in-out;
+        z-index: -1;
+      }
+    }
+  }
+
+  .close-x {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.75rem;
+    font-size: 1.2rem;
+    background: transparent;
+    border: none;
+    color: #fefefe;
+    cursor: pointer;
+    transition: 0.2s;
+    &:hover {
+      color: orange;
+      transform: scale(1.2);
+    }
+  }
+
+  .rdp-root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  // .rdp-caption_label {
+  //   font-family "Nunito Sans";
+  // }
+
+  .rdp-day.my-today,
+  .my-today {
+    border-radius: 20px !important;
+  }
+  .rdp-day.my-selected {
+    border-radius: 20px;
+  }
+
+  .rdp-chevron {
+    transform: scale(0.8) !important;
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+
+      defs {
+        // define your linear gradient here
+        linearGradient {
+          stop:first-child {
+            stop-color: var(--main-special-1);
+          }
+          stop:last-child {
+            stop-color: var(--sub-special-1);
+          }
+        }
+      }
+
+      polygon {
+        fill: url(#chevronGradient);
+      }
+    }
+  }
+  /* Alternatively: inject a gradient via mask effect */
+  .rdp-chevron polygon {
+    fill: url(#chevronGradient);
+  }
+  .rdp-chevron polygon {
+    fill: url(#chevronGradient);
+    transition: transform 0.2s ease;
+  }
+  .rdp-chevron:hover polygon {
+    transform: scale(1.1);
+  }
+
+  .rdp-caption_label {
+    text-transform: capitalize;
+  }
+
+  .modal-title {
+    font-family: "Bruno Ace SC";
+    text-wrap: nowrap;
+    font-size: 1.5rem;
+    background: linear-gradient(var(--main-special-1), var(--sub-special-1));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+    padding-top: 1rem;
+    // margin-top: 2rem !important;
+    // padding-top: 1rem;
+  }
+
+  .rdp {
+    --rdp-accent-color: var(--main-special-1);
+    --rdp-background-color: rgba(57, 255, 20, 0.1);
+    --rdp-outline: none;
+    --rdp-today-color: var(--main-special-1);
+
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 15px;
+    padding: 1rem;
+    backdrop-filter: blur(6px);
+
+    .rdp-day {
+      color: #fefefe;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: linear-gradient(var(--main-special-1), var(--sub-special-1));
+        color: black;
+      }
+    }
+
+    .my-today {
+      // border: 1px solid var(--main-special-1);
+      background-color: #333;
+    }
+
+    .my-selected {
+      background: linear-gradient(var(--main-special-1), var(--sub-special-1));
+      color: black !important;
+      font-weight: 600;
+      box-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+      transform: scale(1.05);
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+
+    button {
+      font-family: "Bruno Ace SC";
+      padding: 0.5rem 0.75rem;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(var(--sub-special-1), #012c03);
+      color: #fefefe;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      &:first-child {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--main-special-1);
+      }
+    }
+
+    .add-btn {
+      font-family: "Bruno Ace SC";
+      background: rgba(255, 255, 255, 0.05);
+      color: #fefefe;
+      border: 1px solid rgba(57, 255, 20, 0.4);
+      &:hover {
+        box-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
+        background: linear-gradient(var(--main-special-1), var(--sub-special-1));
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    .close-btn {
+      transform: scale(0.9);
+      font-family: "Bruno Ace SC";
+      background: rgba(230, 204, 5, 0.05);
+      color: orange !important;
+      border: 1px solid rgba(255, 220, 20, 0.4);
+
+      &:hover {
+        box-shadow: 0 0 20px rgba(255, 220, 20, 0.4);
+        color: black;
+      }
+    }
+  }
+
+  .next-step-btn {
+    width: 100%;
+    margin-top: 1rem;
+    font-family: "Bruno Ace SC";
+    padding: 0.75rem 1.5rem;
+    // background: linear-gradient(var(--main-special-1), var(--sub-special-1));
+    background: linear-gradient(rgba(57, 255, 20, 0.5), rgba(0, 67, 0, 0.5));
+    color: #fefefe;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
+      background: linear-gradient(rgba(57, 255, 20, 0.75), rgba(0, 67, 0, 0.75));
+    }
+  }
+
+  .error {
+    color: #ff4747;
+    font-size: 0.8rem;
+    text-align: left;
+  }
+}
+
+/* WHy 2nd time? */
+.custom-calendar {
+  .calendar-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .hour-picker-wrap {
+      width: 100%;
+    }
+
+    .sidebar {
+      margin-top: 1rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 1rem;
+      width: 100%;
+      max-width: 400px;
+
+      /* SLOTS TABLE */
+      .slots-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+        font-size: 0.85rem;
+        background: transparent;
+        color: #e8f5e9;
+
+        thead {
+          th {
+            text-align: left;
+            font-weight: 500;
+            color: #a8e6a3;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 0.04rem;
+            padding: 0.4rem 0.6rem;
+            border-bottom: 1px solid rgba(100, 255, 100, 0.1);
+          }
+        }
+
+        tbody {
+          .data-row {
+            background: rgba(20, 40, 20, 0.4);
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(100, 255, 100, 0.05);
+
+            &:hover {
+              background: rgba(30, 60, 30, 0.5);
+              transform: translateY(-1px);
+            }
+
+            td {
+              padding: 0.4rem 0.6rem;
+              vertical-align: middle;
+              border: none;
+
+              &:first-child {
+                color: #b2f0b2;
+                font-weight: 500;
+                text-transform: capitalize;
+              }
+
+              &:nth-child(2),
+              &:nth-child(3) {
+                color: #dfffe0;
+              }
+            }
+
+            .remove-slot {
+              background: none;
+              border: 1px solid rgba(255, 150, 150, 0.25);
+              color: #ffaaaa;
+              font-weight: 500;
+              font-size: 0.75rem;
+              padding: 0.25rem 0.55rem;
+              border-radius: 6px;
+              cursor: pointer;
+              transition: all 0.2s ease;
+
+              &:hover {
+                background: rgba(255, 150, 150, 0.1);
+                border-color: rgba(255, 150, 150, 0.4);
+                color: #ffc7c7;
+              }
+
+              &:active {
+                transform: scale(0.96);
+              }
+            }
+          }
+
+          tr + tr {
+            margin-top: 0.3rem;
+          }
+        }
+
+        tbody tr td:first-child {
+          border-top-left-radius: 8px;
+          border-bottom-left-radius: 8px;
+        }
+
+        tbody tr td:last-child {
+          border-top-right-radius: 8px;
+          border-bottom-right-radius: 8px;
+        }
+      }
+      /* END OF SLOTS TABLE */
+
+      h3 {
+        font-family: "Bruno Ace SC";
+        background: -webkit-linear-gradient(var(--main-special-1), var(--sub-special-1));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      ul {
+        list-style: none;
+        margin-top: 0.75rem;
+        padding: 0;
+        li {
+          color: #fefefe;
+          font-size: 0.9rem;
+          margin-bottom: 0.4rem;
+        }
+      }
+    }
+
+    /* APPROVE BUTTON */
+    .approve-date-btn {
+      width: 100%;
+      font-family: "Bruno Ace SC";
+      display: inline-block;
+      padding: 0.7rem 1.8rem;
+      margin-top: 1rem;
+
+      background: linear-gradient(145deg, #0c0c0c, #111);
+      border: 1px solid rgba(57, 255, 20, 0.2);
+      color: #39ff14;
+      font-size: 0.95rem;
+      font-weight: 500;
+      border-radius: 10px;
+
+      box-shadow: inset 0 0 5px rgba(57, 255, 20, 0.1), 0 0 8px rgba(0, 0, 0, 0.6);
+
+      transition: all 0.25s ease;
+      cursor: pointer;
+
+      &:hover {
+        background: linear-gradient(145deg, #111, #0f0f0f);
+        border-color: rgba(57, 255, 20, 0.4);
+        box-shadow: 0 0 10px rgba(57, 255, 20, 0.25);
+        transform: translateY(-1px);
+      }
+
+      &:active {
+        background: #080808;
+        box-shadow: inset 0 0 6px rgba(57, 255, 20, 0.3);
+        transform: translateY(1px);
+      }
+
+      &:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+        border-color: rgba(80, 80, 80, 0.3);
+        color: #555;
+        box-shadow: none;
+      }
+    }
+  }
+
+  .my-selected {
+    background: linear-gradient(var(--main-special-1), var(--sub-special-1));
+    color: black !important;
+    font-weight: 600;
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+    transform: scale(1.05);
+  }
+}
+
+/* pulse effect for active glow */
+@keyframes pulseGlow {
+  from {
+    opacity: 0.4;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 0.9;
+    transform: scale(1.03);
+  }
+}

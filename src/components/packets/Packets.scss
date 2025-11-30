@@ -1,0 +1,458 @@
+.packets-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  max-height: 100vh;
+  z-index: 1;
+  padding: 10vh 10%;
+
+  .section-header {
+    text-wrap: wrap !important;
+    color: #fefefe;
+    font-size: 3.25rem;
+  }
+
+  .packets-info {
+    font-family: "Bruno Ace SC";
+    color: #fefefe;
+    text-align: left;
+
+    strong {
+      font-weight: 700 !important;
+      background: -webkit-linear-gradient(var(--main-special-1), var(--sub-special-1));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  .packets-arrows {
+    display: none;
+  }
+
+  .packets-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-top: 2rem;
+    gap: 1rem;
+
+    .packet-box {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      padding: 1rem 1.5rem;
+      background: rgba(0, 0, 0, 1);
+      border: 1px solid rgba(225, 225, 225, 0.15);
+      border-radius: 25px;
+
+      &:hover {
+        -webkit-box-shadow: 4px 4px 16px 0px rgba(37, 37, 37, 1);
+        -moz-box-shadow: 4px 4px 16px 0px rgba(37, 37, 37, 1);
+        box-shadow: 4px 4px 16px 0px rgba(37, 37, 37, 1);
+      }
+
+      .packet-headers {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .packet-header {
+          font-size: 1.5rem;
+          text-align: center;
+          margin: 0;
+          margin-bottom: auto;
+
+          // text-wrap: nowrap;
+          // background: -webkit-linear-gradient(#26ff00, #004300);
+          // -webkit-background-clip: text;
+          // -webkit-text-fill-color: transparent;
+        }
+
+        .packet-time-amount {
+          text-align: center;
+          margin-top: 0.5rem;
+          font-size: 1.125rem;
+          color: #cecece;
+        }
+
+        .packet-discount {
+          background: -webkit-linear-gradient(var(--main-special-1), var(--sub-special-1));
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      }
+
+      .packet-description-wrapper {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-top: 1rem;
+
+        .packet-info {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          // gap: 1rem;
+
+          svg {
+            position: absolute;
+            left: -0.75rem;
+            width: 20px;
+            // margin-right: auto;
+          }
+          &:nth-child(5),
+          &:nth-child(6) {
+            svg {
+              opacity: 0.25;
+            }
+          }
+        }
+        &:hover {
+          .packet-info {
+            svg {
+              opacity: 1 !important;
+            }
+          }
+        }
+        .packet-description {
+          // text-align: center !important;
+          color: white;
+          // font-family: "Bruno Ace SC", sans-serif;
+          font-family: "Nunito Sans";
+          font-weight: 500;
+          font-style: normal;
+          line-height: 1.5;
+          text-transform: uppercase;
+          letter-spacing: 0.25px;
+          padding: 0 8%;
+
+          text-align: center;
+        }
+      }
+      .additional-info {
+        text-wrap: nowrap !important;
+        position: absolute;
+        bottom: 0.5rem;
+
+        width: 100%;
+        text-align: center;
+
+        // font-size: 1.125rem;
+        font-size: 1rem;
+        font-family: "Bruno Ace SC", sans-serif !important;
+        font-weight: 900;
+
+        background: -webkit-linear-gradient(var(--main-special-1), var(--sub-special-1));
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+}
+
+/* =============================
+   📦 Packets – mobile snap scroll
+   ============================= */
+@media (max-width: 1168px) {
+  .packets-section {
+    position: relative;
+
+    .packets-info {
+      text-align: center;
+    }
+
+    /* PLACE FOR ARROWS */
+    /* neon arrows – visible only on small screens */
+    .packets-arrows {
+      display: flex !important;
+      justify-content: space-evenly !important;
+      gap: 1.25rem;
+      z-index: 5;
+
+      /* dim arrows at bounds (class set in TS) */
+      &.at-start .packet-arrow.left,
+      &.at-end .packet-arrow.right {
+        opacity: 0.35;
+        pointer-events: none;
+        filter: grayscale(0.4);
+      }
+    }
+
+    .packet-arrow {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid rgba(57, 255, 20, 0.55);
+      background: rgba(5, 5, 5, 0.9);
+      color: #39ff14;
+      font-size: 1.35rem;
+      line-height: 1;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 0 10px rgba(57, 255, 20, 0.35);
+
+      &:hover {
+        transform: translateY(-1px) scale(1.05);
+        box-shadow: 0 0 16px rgba(57, 255, 20, 0.55);
+        background: rgba(57, 255, 20, 0.08);
+      }
+      &:active {
+        transform: scale(0.95);
+        background: rgba(57, 255, 20, 0.18);
+      }
+    }
+
+    .packets-wrapper {
+      /* turn into horizontal scroller on small screens */
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+
+      display: flex;
+      align-items: stretch;
+      justify-content: flex-start;
+
+      /* keep your gap; JS reads this for step size */
+      gap: 1rem;
+
+      padding: 1rem 6%;
+
+      .packet-box {
+        /* one card per view with a tiny peek of next */
+        flex: 0 0 90%;
+        max-width: 90%;
+        min-width: 90%;
+        scroll-snap-align: center;
+      }
+    }
+  }
+}
+
+/* tiny phones */
+@media (max-width: 480px) {
+  .packets-section {
+    .packets-wrapper {
+      padding: 0.75rem 4%;
+      gap: 0.75rem;
+
+      .packet-box {
+        flex-basis: 92%;
+        max-width: 92%;
+        min-width: 92%;
+      }
+    }
+    .packets-arrows {
+      bottom: 4%;
+      .packet-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+/* OTHER MEDIA QUERIES */
+/* 🖥 Large Desktop (≥1600px) */
+@media (min-width: 1600px) {
+  .packets-section {
+    .section-header {
+      font-size: 3.75rem;
+      letter-spacing: 0.5px;
+    }
+
+    .packets-wrapper {
+      .packet-box {
+        .packet-header {
+          font-size: 1.75rem;
+        }
+        .packet-time-amount {
+          font-size: 1.25rem;
+        }
+        .packet-discount {
+          font-size: 1.85rem;
+        }
+        .packet-description {
+          font-size: 1rem;
+          line-height: 1.7;
+        }
+        .additional-info {
+          font-size: 1.25rem;
+        }
+      }
+    }
+  }
+}
+
+/* 💻 Laptop (≤1320px) */
+@media (max-width: 1320px) {
+  .packets-section {
+    .section-header {
+      font-size: 3rem;
+    }
+
+    .packets-wrapper {
+      .packet-box {
+        .packet-header {
+          font-size: 1.45rem;
+        }
+        .packet-time-amount {
+          font-size: 1.05rem;
+        }
+        .packet-discount {
+          font-size: 1.65rem;
+        }
+        .packet-description {
+          font-size: 0.9rem;
+          line-height: 1.6;
+        }
+        .additional-info {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+/* 💻 Tablet Landscape (≤1024px) */
+@media (max-width: 1024px) {
+  .packets-section {
+    .section-header {
+      font-size: 2.6rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .packets-wrapper {
+      .packet-box {
+        .packet-header {
+          font-size: 1.35rem;
+        }
+        .packet-time-amount {
+          font-size: 0.95rem;
+        }
+        .packet-discount {
+          font-size: 1.5rem;
+        }
+        .packet-description {
+          font-size: 0.875rem;
+          line-height: 1.6;
+        }
+        .additional-info {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+/* 📱 Tablet Portrait / Medium Phones (≤768px) */
+@media (max-width: 768px) {
+  .packets-section {
+    .section-header {
+      font-size: 2.2rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      line-height: 1.25;
+    }
+
+    .packets-wrapper {
+      .packet-box {
+        .packet-header {
+          font-size: 1.25rem;
+        }
+        .packet-time-amount {
+          font-size: 0.9rem;
+        }
+        .packet-discount {
+          font-size: 1.35rem;
+        }
+        .packet-description {
+          font-size: 0.84rem;
+          padding: 0 5%;
+          line-height: 1.55;
+        }
+        .additional-info {
+          font-size: 0.875rem;
+        }
+      }
+    }
+  }
+}
+
+/* 📱 Small Phones (≤480px) */
+@media (max-width: 480px) {
+  .packets-section {
+    .section-header {
+      font-size: 1.85rem;
+      text-align: center;
+      line-height: 1.25;
+      margin-bottom: 1.25rem;
+    }
+
+    .packets-wrapper {
+      .packet-box {
+        .packet-header {
+          font-size: 1.1rem;
+        }
+        .packet-time-amount {
+          font-size: 0.8rem;
+        }
+        .packet-discount {
+          font-size: 1.25rem;
+        }
+        .packet-description {
+          font-size: 0.8rem;
+          line-height: 1.5;
+        }
+        .additional-info {
+          font-size: 0.875rem;
+        }
+      }
+    }
+  }
+}
+
+/* 📱 Extra Small Devices (≤360px) */
+@media (max-width: 360px) {
+  .packets-section {
+    .section-header {
+      font-size: 1.6rem;
+      text-align: center;
+    }
+
+    .packets-wrapper {
+      .packet-box {
+        .packet-header {
+          font-size: 1rem;
+        }
+        .packet-time-amount {
+          font-size: 0.75rem;
+        }
+        .packet-discount {
+          font-size: 1.1rem;
+        }
+        .packet-description {
+          font-size: 0.78rem;
+          line-height: 1.45;
+        }
+        .additional-info {
+          font-size: 0.875rem;
+        }
+      }
+    }
+  }
+}

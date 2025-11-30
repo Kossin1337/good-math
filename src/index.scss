@@ -1,0 +1,130 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth !important;
+
+  /* 1. Neon Harmony – bright top, soft dark base */
+  // --main-special-1: #39ff14;
+  // --sub-special-1: #004300;
+  // /* 1. Neon Harmony – bright top, soft dark base */
+  --main-special-1: #39ff14;
+  --sub-special-1: #004300;
+
+  /* 2. Lime Pulse – classic neon with a soft dark base */
+  // --main-special-1: #26ff00;
+  // --sub-special-1: #004300;
+}
+
+body {
+  min-height: 100vh;
+  max-width: 100vw;
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: white;
+  font-family: "Bruno Ace SC", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0.5rem 0;
+  // letter-spacing: 0.5px;
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin; /* auto | thin | none */
+  scrollbar-color: var(--main-special-1) var(--sub-special-1);
+  /* thumb                 track */
+}
+
+/* Chrome, Edge (Chromium), Safari (WebKit) */
+*::-webkit-scrollbar {
+  width: 12px;
+  height: 12px; /* horizontal bars */
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--sub-special-1);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--main-special-1);
+  border-radius: 999px;
+  border: 3px solid var(--sub-special-1); /* creates a gap to the track */
+  box-shadow: 0 0 8px rgba(57, 255, 20, 0.6); /* subtle neon glow */
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  box-shadow: 0 0 12px rgba(57, 255, 20, 0.85);
+}
+
+*::-webkit-scrollbar-corner {
+  background: var(--sub-special-1); /* where two scrollbars meet */
+}
+
+/* Optional: darker track on body only (keeps inputs neutral) */
+body::-webkit-scrollbar-track {
+  background: var(--sub-special-1);
+}
+
+/* Optional: make scrollbars thinner on small screens */
+@media (max-width: 640px) {
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-thumb {
+    border-width: 2px;
+  }
+}
+
+// h5 {
+//   font-size: 1.25rem !important; /* 20px */
+//   letter-spacing: -0.005em !important;
+// }
+
+// h4 {
+//   font-size: 1.5625rem !important; /* 25px */
+//   letter-spacing: -0.0075em !important;
+// }
+
+// h3 {
+//   font-size: 1.953rem !important; /* 31.25px */
+//   letter-spacing: -0.01em !important;
+// }
+
+// h2 {
+//   font-size: 2.441rem !important; /* 39.06px */
+//   letter-spacing: -0.015em !important;
+// }
+
+// h1 {
+//   font-size: 3.052rem !important; /* 48.83px */
+//   letter-spacing: -0.0175em !important;
+// }
+
+// h1 {
+//   font-size: 3.815rem !important; /* 61.04px */
+//   letter-spacing: -0.02em !important;
+// }
+
+.section-header {
+  background: -webkit-linear-gradient(var(--main-special-1), var(--sub-special-1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-wrap: nowrap;
+}
+
+// span {
+//   font-family: "Nata Sans", sans-serif !important;
+//   font-optical-sizing: auto;
+//   font-style: normal;
+// }
