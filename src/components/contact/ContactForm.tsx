@@ -9,7 +9,7 @@ import { formFieldsReview } from "../../animations/motionPresets";
 import { motion } from "framer-motion";
 
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db } from "../../utils/firebase"; // adjust path if needed
+import { db } from "../../../functions/lib/firebase"; // adjust path if needed
 
 import "./ContactForm.scss";
 

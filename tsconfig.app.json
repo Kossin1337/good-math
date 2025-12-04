@@ -23,5 +23,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "public/scripts/particles.js"]
+  "include": ["src", "public/scripts/particles.js", "functions"]
 }
