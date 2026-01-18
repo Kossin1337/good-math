@@ -25,8 +25,8 @@ interface DailyAvailabilityBarProps {
 const DailyAvailabilityBar: React.FC<DailyAvailabilityBarProps> = ({
   setHour,
   setMinute,
-  startHour,
-  endHour,
+  startHour = 9,
+  endHour = 20,
   stepMinutes = 30,
   durationMinutes,
   unavailable = [],
