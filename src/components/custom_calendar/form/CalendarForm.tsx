@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, Controller } from "react-hook-form";
 
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db } from "../../../../functions/lib/firebase";
+import { db } from "../../../utils/firebase";
 
 import "./CalendarForm.scss";
 

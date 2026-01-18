@@ -1,6 +1,6 @@
 import { Router } from "express";
 import type { Request, Response } from "express";
-import { getFreeBusyForDateV2, calendarId } from "./calendarClient";
+import { getFreeBusyForDateV2, calendarId } from "../utils/calendarClient";
 
 const router = Router();
 

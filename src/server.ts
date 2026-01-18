@@ -5,6 +5,8 @@ import calendarRouter from "./routes/calendar"; // adjust path if needed
 
 const app = express();
 
+// --- MIDDLEWARE ---
+
 // Allow your Vite dev server
 app.use(
   cors({
@@ -16,19 +18,21 @@ app.use(
 app.use(express.json());
 
 // --- ROUTES ---
+
 // Calendar API under /api
 app.use("/api", calendarRouter);
 
-// Health check (optional)
+// Simple health check (optional)
 app.get("/api/health", (_req, res) => {
   res.json({ ok: true });
 });
 
 // --- START SERVER ---
-// const PORT = Number(process.env.PORT) || 8080;
-// app.listen(PORT, "0.0.0.0", () => console.log("Listening on", PORT));
-// app.listen(PORT, () => {
-//   console.log(`API server listening on http://localhost:${PORT}`);
-// });
+
+const PORT = Number(process.env.PORT) || 8080;
+
+app.listen(PORT, () => {
+  console.log(`API server listening on http://localhost:${PORT}`);
+});
 
 export default app;
