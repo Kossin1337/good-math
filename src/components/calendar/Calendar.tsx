@@ -1,4 +1,3 @@
-import React from "react";
 import GoogleCalendarEmbed from "./GoogleCalendarEmbed";
 import "./Calendar.scss";
 

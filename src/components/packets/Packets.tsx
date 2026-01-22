@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import MapPointIcon from "../../icons/MapPointIcon";
 import CalendarDaysIcon from "../../icons/CalendarDaysIcon";
 import BookIcon from "../../icons/BookIcon";

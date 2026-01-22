@@ -6,12 +6,7 @@ import LocationIcon from "../../icons/LocationIcon";
 import PhoneIcon from "../../icons/PhoneIcon";
 import "./Main.scss";
 import { motion } from "framer-motion";
-import {
-  slideIn,
-  rightMainSlide,
-  slightTextAppear,
-  photoAppear,
-} from "../../animations/motionPresets";
+import { rightMainSlide, slightTextAppear, photoAppear } from "../../animations/motionPresets";
 
 // import avatar1 from "../../../public/profil.png";
 // import avatar2 from "../../../public/profilowe.jpg";
